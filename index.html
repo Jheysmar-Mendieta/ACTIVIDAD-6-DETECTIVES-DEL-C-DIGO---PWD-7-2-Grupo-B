@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <!-- hace que la página se adapte a celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador de Contraseñas — SIMC</title>
+  <!-- iconos (los de copiar, recargar, etc) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- fuentes personalizadas -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Syne:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- estilos propios -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- contenedor principal de toda la página -->
+  <div class="page">
+    <!-- encabezado -->
+    <div class="header">
+      <h1 class="title">
+        Generador de <span class="gradient-text">contraseñas</span>
+      </h1>
+    </div>
+    <!-- tarjeta principal -->
+    <div class="card">
+      <!-- caja donde aparece la contraseña -->
+      <div class="result-box">
+        <span id="pwDisplay">Presioná generar...</span>
+        <!-- botón para copiar -->
+        <button class="copy-btn" id="copyBtn" onclick="copyPassword()">
+          <i class="fas fa-copy"></i>
+        </button>
+      </div>
+
+      <!-- barra de seguridad -->
+      <div class="strength-row">
+        <div class="strength-bars">
+          <!-- cada div es una barrita -->
+          <div class="bar" id="b1"></div>
+          <div class="bar" id="b2"></div>
+          <div class="bar" id="b3"></div>
+          <div class="bar" id="b4"></div>
+        </div>
+
+        <!-- texto que dice si es débil o fuerte -->
+        <span class="strength-label" id="strengthLabel">—</span>
+      </div>
+
+      <!-- control de longitud -->
+      <div class="control-group">
+        <div class="control-header">
+          <label>Longitud</label>
+
+          <!-- muestra el número actual -->
+          <span class="value-badge" id="lengthVal">16</span>
+        </div>
+
+        <!-- slider para elegir la longitud -->
+        <input type="range" id="lengthSlider" min="6" max="48" value="16" step="1" />
+      </div>
+
+      <!-- opciones de tipos de caracteres -->
+      <div class="control-group">
+        <label>Incluir</label>
+
+        <div class="options">
+          <!-- botones para activar/desactivar tipos -->
+          <button class="option active" id="opt-lower"   onclick="toggle('lower')">a–z</button>
+          <button class="option active" id="opt-upper"   onclick="toggle('upper')">A–Z</button>
+          <button class="option active" id="opt-numbers" onclick="toggle('numbers')">0–9</button>
+          <button class="option active" id="opt-symbols" onclick="toggle('symbols')">!@#$</button>
+        </div>
+      </div>
+
+      <!-- botón principal -->
+      <button class="btn-generate" onclick="generatePassword()">
+        <i class="fas fa-rotate"></i>
+        Generar contraseña
+      </button>
+
+    </div>
+
+  </div>
+  <!-- conecta con el JS -->
+  <script src="js/generator.js"></script>
+</body>
+</html>
